@@ -1,7 +1,16 @@
 function drawTree(x){
-    return
+    document.body.appendChild(`<div class=" branch gold">*</div>`)
+    for(var i=1;i<=x;i++){
+        var content = ``;
+
+        content+= "*"+" | ".repeat(2*i-1)+"*"
+
+        document.body.appendChild(`
+            <div class=" branch gold">${content}</div>
+        `)
+    }
 }
-window.onload= function(){
+document.addEventListener("DOMContentLoaded",function(){
     const headline = document.createElement("div");
     headline.innerHTML = `
         <h1 class="gold">*</h1>
@@ -14,20 +23,24 @@ window.onload= function(){
     input.innerHTML = `
         <label for="size">What is the size of your tree?</label>
         <input type="text" name="size" id="size">
-        <button>Draw Tree</button>
+        <button id="send">Draw Tree</button>
     `
     input.classList.add("input");
     document.body.appendChild(input);
     
-}
-const userInput = document.getElementById("size");
-const sendBtn = document.querySelector("button");
-sendBtn.addEventListener("click",function(){
-    const x = userInput.value;
-    drawTree(x);
+    const userInput = document.getElementById("size");
+    const sendBtn = document.getElementById("send");
+    sendBtn.addEventListener("click",function(){
+        const x = userInput.value;
+        console.log(x)
+        drawTree(x);
+    })
+
+    const branches = document.querySelectorAll(".branch");
+
 })
 // Example how treee will be drawn
-{/* <div class="gold">*</div>
-<div class="green">* | *</div>
-<div class="red">* | | | *</div>
-<div class="green">* | | | | | *</div> */}
+{/* <div class=" branch gold">*</div>
+<div class="branch green">* | *</div>
+<div class=" branch red">* | | | *</div>
+<div class=" branch green">* | | | | | *</div> */}
