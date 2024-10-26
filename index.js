@@ -1,7 +1,7 @@
-const branches = document.querySelectorAll(".branch");
 const treeContainer = document.createElement("div");
 treeContainer.classList.add("tree");
 document.addEventListener("DOMContentLoaded",function(){
+    // O(x), x being the input by user
     function drawTree(x){
         treeContainer.innerHTML = `<div class=" branch gold">*</div>`
         for(var i=1;i<x;i++){
@@ -10,21 +10,22 @@ document.addEventListener("DOMContentLoaded",function(){
             content+= "*"+" | ".repeat((2*i)-1)+"*"
             if(i%2===0){
                 treeContainer.innerHTML+=`
-                    <div class=" branch green">${content}</div>
+                    <div class="green">${content}</div>
                     `
             }
             else if(i%2!==0){
                 treeContainer.innerHTML+=`
-                    <div class=" branch red">${content}</div>
+                    <div class="red">${content}</div>
                     `
             }
             }
         document.body.appendChild(treeContainer)
     }
+
     const headline = document.createElement("div");
     headline.innerHTML = `
         <h1 class="gold">*</h1>
-        <h1>It this time of the year</h1>
+        <h1>It is this time of the year</h1>
         <h1 class="gold">*</h1>
     `
     headline.classList.add("headline");
@@ -37,9 +38,10 @@ document.addEventListener("DOMContentLoaded",function(){
     `
     input.classList.add("input");
     document.body.appendChild(input);
-    
     const userInput = document.getElementById("size");
     const sendBtn = document.getElementById("send");
+    
+
     sendBtn.addEventListener("click",function(){
         const x = userInput.value;
         console.log(x)
@@ -48,8 +50,3 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 })
-// Example how treee will be drawn
-{/* <div class=" branch gold">*</div>
-<div class="branch green">* | *</div>
-<div class=" branch red">* | | | *</div>
-<div class=" branch green">* | | | | | *</div> */}
