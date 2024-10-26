@@ -1,3 +1,6 @@
+function drawTree(x){
+    return
+}
 window.onload= function(){
     const headline = document.createElement("div");
     headline.innerHTML = `
@@ -18,6 +21,11 @@ window.onload= function(){
     
 }
 const userInput = document.getElementById("size");
+const sendBtn = document.querySelector("button");
+sendBtn.addEventListener("click",function(){
+    const x = userInput.value;
+    drawTree(x);
+})
 // Example how treee will be drawn
 {/* <div class="gold">*</div>
 <div class="green">* | *</div>
