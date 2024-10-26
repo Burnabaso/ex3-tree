@@ -1,16 +1,19 @@
-function drawTree(x){
-    document.body.appendChild(`<div class=" branch gold">*</div>`)
-    for(var i=1;i<=x;i++){
-        var content = ``;
-
-        content+= "*"+" | ".repeat(2*i-1)+"*"
-
-        document.body.appendChild(`
-            <div class=" branch gold">${content}</div>
-        `)
-    }
-}
+const branches = document.querySelectorAll(".branch");
+const treeContainer = document.createElement("div")
 document.addEventListener("DOMContentLoaded",function(){
+    function drawTree(x){
+        treeContainer.innerHTML = `<div class=" branch gold">*</div>`
+        for(var i=1;i<x;i++){
+            var content = ``;
+            
+            content+= "*"+" | ".repeat(2*i-1)+"*"
+            
+            treeContainer.innerHTML+=`
+                <div class=" branch gold">${content}</div>
+                `
+            }
+        document.body.appendChild(treeContainer)
+    }
     const headline = document.createElement("div");
     headline.innerHTML = `
         <h1 class="gold">*</h1>
@@ -36,7 +39,6 @@ document.addEventListener("DOMContentLoaded",function(){
         drawTree(x);
     })
 
-    const branches = document.querySelectorAll(".branch");
 
 })
 // Example how treee will be drawn
