@@ -1,16 +1,23 @@
 const branches = document.querySelectorAll(".branch");
-const treeContainer = document.createElement("div")
+const treeContainer = document.createElement("div");
+treeContainer.classList.add("tree");
 document.addEventListener("DOMContentLoaded",function(){
     function drawTree(x){
         treeContainer.innerHTML = `<div class=" branch gold">*</div>`
         for(var i=1;i<x;i++){
             var content = ``;
             
-            content+= "*"+" | ".repeat(2*i-1)+"*"
-            
-            treeContainer.innerHTML+=`
-                <div class=" branch gold">${content}</div>
-                `
+            content+= "*"+" | ".repeat((2*i)-1)+"*"
+            if(i%2===0){
+                treeContainer.innerHTML+=`
+                    <div class=" branch green">${content}</div>
+                    `
+            }
+            else if(i%2!==0){
+                treeContainer.innerHTML+=`
+                    <div class=" branch red">${content}</div>
+                    `
+            }
             }
         document.body.appendChild(treeContainer)
     }
